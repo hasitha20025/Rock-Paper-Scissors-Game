@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game(Rock,Paper,Scissors)</title>
+</head>
+<body>
+    
+    <p>Rock paper Scissors</p>
+    
+    <button type="button" onclick="pick_rock()">Rock</button>
+    <button type="button" onclick="pick_Paper()">Paper</button>
+    <button type="button" onclick="pick_scissors()">scissors</button>
+    <button type="button" onclick="Reset()">Reset</button>
+
+    <script>
+    // 1-Rock ,2-Paper  3-Scissors
+    let random_number; 
+    let you_pick;
+    let Computer_pick;
+    let results_wins = 0;
+    let results_lost = 0;
+    let results_tit  = 0;
+
+    // Retrieving data
+    resving_data();
+
+    function resving_data() {  // Retrieving data
+
+            console.log("resving_data"); 
+            let text = localStorage.getItem("results_wins");
+            if (text) {
+                results_wins = JSON.parse(text);
+                console.log("resving_data results_wins: " + text);  
+            }
+
+            text = localStorage.getItem("results_lost");
+            if (text) {
+                results_lost = JSON.parse(text);
+                console.log("resving_data results_lost: " + text);  
+            }
+
+            text = localStorage.getItem("results_tit");
+            if (text) {
+                results_tit = JSON.parse(text);
+                console.log("resving_data results_tit:  " + text);  
+            }    
+        }
+    
+    // storing data
+    function store_data(){
+
+        // store results_wins
+        console.log("store_data"); 
+        let json_results = JSON.stringify(results_wins);
+        localStorage.setItem("results_wins",json_results);
+        console.log("store_data results_wins: " + json_results);
+
+        // store results_lost
+        json_results = JSON.stringify(results_lost);
+        localStorage.setItem("results_lost",json_results);
+        console.log("store_data results_lost: " + json_results);
+
+        // store results_tit
+        json_results = JSON.stringify(results_tit);
+        localStorage.setItem("results_tit",json_results);
+        console.log("store_data results_tit:  " + json_results);
+
+    }
+    
+    function Reset() {
+        results_wins = 0;
+        results_lost = 0;
+        results_tit  = 0;
+        console.log("Reset all values");
+        store_data(); // storing data    
+    }
+
+    function incrres_win() {
+        results_wins += 1;
+        store_data(); // storing data
+        console.log("wins: " + results_wins +" lost:" + results_lost + " tit:" + results_tit);
+        alert("You picked " + you_pick + ", Computer picked " + Computer_pick + ", You " + result + "!" + " Win: " + results_wins + " Losses: " + results_lost + " Tits: " + results_tit);
+    }
+
+    function incrres_lost() {
+        results_lost += 1;
+        store_data(); // storing data
+        console.log("wins: " + results_wins +" lost: " + results_lost + " tit: " + results_tit );
+        alert("You picked " + you_pick + ", Computer picked " + Computer_pick + ", You " + result + "!" + " Win: " + results_wins + " Losses: " + results_lost + " Tits: " + results_tit);
+    }
+
+    function incrres_tit() {
+        results_tit += 1;
+        store_data(); // storing data
+        console.log("wins: " + results_wins +" lost: " + results_lost + " tit: " + results_tit );
+        alert("You picked " + you_pick + ", Computer picked " + Computer_pick + ", You " + result + "!" + " Win: " + results_wins + " Losses: " + results_lost + " Tits: " + results_tit);
+    }
+
+    function pick_rock(){
+        you_pick = "rock";
+        random_number = (Math.floor(Math.random() * 3) + 1);
+
+        if (random_number === 1) {
+            Computer_pick = "rock";
+            result = "Tit";
+            incrres_tit();
+            console.log("rock");
+        }
+        else if (random_number === 2) {
+            Computer_pick = "paper";
+            result = "lost";
+            incrres_lost();
+            console.log("paper");
+        }
+        else if (random_number === 3){
+            Computer_pick = "scissors";
+            result = "win";
+            incrres_win();
+            console.log("scissors");
+        }
+        else{
+            console.log("erro");
+        }
+        //alert("You picked " + you_pick + ". Computer picked " + Computer_pick + " You " + result + "!" + " Win: " + results.wins + " Losses: " + results.lost + " Tits: " + results.tit);
+    }
+
+    function pick_Paper(){
+        you_pick = "paper";
+        random_number = (Math.floor(Math.random() * 3) + 1);
+
+        if (random_number === 1) {
+            Computer_pick = "rock";
+            result = "win";
+            incrres_win();
+            console.log("rock");
+        }
+        else if (random_number === 2) {
+            Computer_pick = "paper";
+            result = "tit";
+            incrres_tit();
+            console.log("paper");
+        }
+        else if (random_number === 3){
+            Computer_pick = "scissors";
+            result = "lost";
+            incrres_lost();
+            console.log("scissors");
+        }
+        else{
+            console.log("erro");
+        }
+        //alert("You picked " + you_pick + ". Computer picked " + Computer_pick + " You " + result + "!" );
+    }
+
+    function pick_scissors(){
+        you_pick = "scissors";
+        random_number = (Math.floor(Math.random() * 3) + 1);
+
+        if (random_number === 1) {
+            Computer_pick = "rock";
+            result = "lost";
+            incrres_lost();
+            console.log("rock");
+        }
+        else if (random_number === 2) {
+            Computer_pick = "paper";
+            result = "win";
+            incrres_win();
+            console.log("paper");
+        }
+        else if (random_number === 3){
+            Computer_pick = "scissors";
+            result = "tit";
+            incrres_tit();
+            console.log("scissors");
+        }
+        else{
+            console.log("erro");
+        }
+        //alert("You picked " + you_pick + ". Computer picked " + Computer_pick + " You " + result + "!" );
+    }
+    </script>
+
+</body>
+</html>
