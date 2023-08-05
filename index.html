@@ -20,9 +20,9 @@
     
     <p id="Computer-picker">Computer picker:</p>
 
-    <P id="wins-total">Wins:</P> 
-    <P id="losses-total">Losses:</P> 
-    <P id="tites-total">Tites:</P>
+    <P id="wins-total">Wins: 0</P> 
+    <P id="losses-total">Losses: 0</P> 
+    <P id="tites-total">Tites: 0</P>
 
 
     <script>
@@ -84,6 +84,10 @@
         results_wins = 0;
         results_lost = 0;
         results_tit  = 0;
+        document.getElementById("wins-total").innerHTML = "Wins: 0";
+        document.getElementById("losses-total").innerHTML = "Losses: 0";
+        document.getElementById("tites-total").innerHTML = "Tites: 0";
+        alert("Reset Game");
         console.log("Reset all values");
         store_data(); // storing data    
     }
@@ -102,7 +106,7 @@
         store_data(); // storing data
         console.log("wins: " + results_wins +" lost: " + results_lost + " tit: " + results_tit );
         document.getElementById("result").innerHTML = "Result: You Lost!";
-        document.getElementById("losses-total").innerHTML = "Lost: "+ results_lost;
+        document.getElementById("losses-total").innerHTML = "Losses: "+ results_lost;
         //alert("You picked " + you_pick + ", Computer picked " + Computer_pick + ", You " + result + "!" + " Win: " + results_wins + " Losses: " + results_lost + " Tits: " + results_tit);
     }
 
@@ -133,7 +137,7 @@
             Computer_pick = "paper";
             result = "lost";
             incrres_lost();
-            document.getElementById("Computer-picker").innerHTML = "Computer picker: paper";
+            document.getElementById("Computer-picker").innerHTML = "Computer picker: Paper";
             console.log("paper");
         }
         else if (random_number === 3){
@@ -166,7 +170,7 @@
             Computer_pick = "paper";
             result = "tit";
             incrres_tit();
-            document.getElementById("Computer-picker").innerHTML = "Computer picker: paper";
+            document.getElementById("Computer-picker").innerHTML = "Computer picker: Paper";
             console.log("paper");
         }
         else if (random_number === 3){
@@ -199,7 +203,7 @@
             Computer_pick = "paper";
             result = "win";
             incrres_win();
-            document.getElementById("Computer-picker").innerHTML = "Computer picker: paper";
+            document.getElementById("Computer-picker").innerHTML = "Computer picker: Paper";
             console.log("paper");
         }
         else if (random_number === 3){
